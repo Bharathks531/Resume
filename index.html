@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bharath K S, Product and UX Designer</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .ve {
+    /* color tokens — all text >= 4.5:1 (WCAG AA) */
+    --ink: #14161a;
+    --body: #33383f;
+    --muted: #5f636b;
+    --hair: #d7dae0;
+    --panel: #f4f5f7;
+    --accent: #1a5fd0;
+    --mono: 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
+    /* type scale (tightened for one-page A4) */
+    --t-name: 26px; --t-lead: 13px; --t-body: 13px; --t-title: 12.5px;
+    --t-meta: 10.5px; --t-label: 10px;
+    /* spacing scale */
+    --s1: 4px; --s2: 6px; --s3: 10px; --s4: 14px; --s6: 18px; --s8: 24px;
+
+    display: grid; grid-template-columns: minmax(0,1fr) 236px;
+    color: var(--body);
+    background: #fff;
+    width: 210mm;
+    min-height: 297mm;
+    margin: 24px auto;
+    box-shadow: 0 10px 44px rgba(20,24,30,0.16);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body { background: #e9ebee; }
+
+  .ve .left { padding: 12mm 11mm; min-width: 0; }
+  .ve .meta-col { background: var(--panel); border-left: 1px solid #e6e7ea; padding: 12mm var(--s6); }
+
+  /* header */
+  .ve .head { padding-bottom: var(--s6); margin-bottom: var(--s6); border-bottom: 1px solid var(--hair); }
+  .ve h1 { font-size: var(--t-name); font-weight: 800; letter-spacing: -0.8px; line-height: 1.05; color: var(--ink); }
+  .ve .role { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: 0.3px; margin-top: var(--s2); }
+  .ve .summary { font-size: var(--t-lead); line-height: 1.55; color: var(--ink); margin-top: var(--s4); }
+  .ve .summary strong { font-weight: 700; color: var(--ink); }
+
+  /* section headings */
+  .ve .col-h, .ve .side-h {
+    font-family: var(--mono); font-size: var(--t-label); font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase; color: var(--ink);
+  }
+  .ve .col-h::before, .ve .side-h::before { content: '// '; color: var(--accent); }
+  .ve .col-h { margin-bottom: var(--s4); }
+  .ve .side-h { margin-bottom: var(--s3); padding-bottom: var(--s2); border-bottom: 1px solid var(--hair); }
+
+  /* experience / timeline */
+  .ve .job { position: relative; padding-left: var(--s4); margin-bottom: var(--s6); }
+  .ve .job:last-child { margin-bottom: 0; }
+  .ve .job::before { content:''; position:absolute; left:3px; top:5px; bottom:5px; width:2px; background: var(--hair); }
+  .ve .job::after { content:''; position:absolute; left:0; top:5px; width:8px; height:8px; box-sizing:border-box; border-radius:50%; background: var(--accent); border:2px solid #fff; box-shadow:0 0 0 1px var(--hair); }
+  .ve .job-title { font-size: var(--t-title); font-weight: 800; letter-spacing: 0.4px; text-transform: uppercase; color: var(--ink); }
+  .ve .job-company { color: var(--accent); font-weight: 800; }
+  .ve .job-qualifier { color: var(--muted); font-weight: 700; }
+  .ve .job-meta { font-family: var(--mono); font-size: var(--t-meta); color: var(--muted); letter-spacing: 0.2px; margin: 2px 0 var(--s3); }
+  .ve .job ul { list-style: none; }
+  .ve .job li { position: relative; padding-left: var(--s4); font-size: var(--t-body); line-height: 1.45; margin-bottom: var(--s1); color: var(--body); }
+  .ve .job li:last-child { margin-bottom: 0; }
+  .ve .job li::before { content:''; position:absolute; left:3px; top:8px; width:4px; height:4px; border-radius:50%; background: var(--muted); }
+
+  /* right rail */
+  .ve .side-block { margin-bottom: var(--s8); }
+  .ve .side-block:last-child { margin-bottom: 0; }
+  .ve .contact-line { font-size: var(--t-body); color: var(--body); line-height: 1.4; margin-bottom: var(--s2); word-break: break-word; }
+  .ve .contact-line:last-of-type { margin-bottom: 0; }
+  .ve .contact-line a { color: var(--body); text-decoration: none; }
+  .ve .contact-line .lbl { font-family: var(--mono); font-size: var(--t-label); color: var(--muted); display:block; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 1px; }
+  .ve .chip-wrap { display: flex; flex-wrap: wrap; gap: var(--s1) 5px; }
+  .ve .chip { font-family: var(--mono); font-size: 11px; background: #fff; border: 1px solid var(--hair); color: var(--body); padding: 4px 8px; border-radius: 4px; line-height: 1.2; }
+  .ve .item { font-size: var(--t-body); line-height: 1.45; color: var(--body); margin-bottom: var(--s3); }
+  .ve .item:last-child { margin-bottom: 0; }
+  .ve .item .t { font-weight: 700; color: var(--ink); }
+
+  /* PRINT — mirrors the on-screen A4 sheet exactly */
+  @media print {
+    @page { size: A4; margin: 0; }
+    html, body { background: #fff; margin: 0; }
+    .ve {
+      display: grid !important;
+      grid-template-columns: minmax(0,1fr) 236px !important;
+      width: 210mm; min-height: 297mm; margin: 0;
+      box-shadow: none;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    .ve .left { grid-column: 1; }
+    .ve .meta-col { grid-column: 2; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .job { break-inside: avoid; }
+  }
+
+  @media screen and (max-width: 800px) {
+    .ve { width: auto; grid-template-columns: 1fr; margin: 12px; }
+    .ve .left { padding: 28px 22px; }
+    .ve .meta-col { border-left: none; border-top: 1px solid var(--hair); padding: 24px 22px; }
+  }
+</style>
+</head>
+<body>
+  <div class="ve">
+    <div class="left">
+      <div class="head">
+        <h1>Bharath K S</h1>
+        <div class="role">UX / Product Designer</div>
+        <p class="summary">
+          A multidisciplinary Product Designer with <strong>12+ years</strong> designing digital experiences that are
+          intuitive, functional, and built to scale. At <strong>Flipkart</strong>, redesigned core product features and
+          led design on new, high-impact launches. Has carried that same ownership into startups, helping build design
+          functions and products from scratch, increasingly with AI built into the process to sharpen decisions
+          and execute stronger work.
+        </p>
+      </div>
+
+      <div class="col-h">Experience</div>
+      <div class="job">
+        <div class="job-title">UX/Product Designer <span class="job-qualifier">(Independent / Consulting)</span></div>
+        <div class="job-meta">2021 – Present</div>
+        <ul>
+          <li>Partnered with a visual designer to redesign the shopping experience for <span class="job-company">Virgio</span>, a sustainable fashion app, while guiding a team of 2 designers. The improved usability reduced journey drop-offs and lifted engagement, interaction, and conversion.</li>
+          <li>Designed digital products from the ground up for early-stage clients, taking each from concept to a build-ready product.</li>
+          <li>Currently building a story-development tool for writers, turning scattered ideas into a clear, structured plan to help them go from first idea to finished script.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job-title">UX/Product Designer II, <span class="job-company">Flipkart</span></div>
+        <div class="job-meta">2014 – 2021</div>
+        <ul>
+          <li>Redesigned core end-to-end experiences across web and app, including Ratings &amp; Reviews, Q&amp;A, Product Page, and Home Page widgets.</li>
+          <li>Contributed as a core team member across multiple design responsibilities for Big Billion Days, India's flagship shopping event.</li>
+          <li>Pioneered Cardless Credit and Flipkart Lite from the ground up; Flipkart Lite, built in collaboration with Google, became India's first progressive web app and drew global recognition.</li>
+          <li>Designed a simplified Flipkart experience for India's next 100M users, reimagining the app for a mass-market audience.</li>
+          <li>Designed FK Videos, an experimental in-app streaming feature built to boost customer retention and engagement.</li>
+          <li>Grounded design decisions in first-hand user research and usability testing, and partnered closely with PMs, marketing, business, and engineering, from concept through launch and beyond, to ensure smooth execution.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job-title">UI/UX Designer, <span class="job-company">CommonFloor</span></div>
+        <div class="job-meta">2013 – 2014</div>
+        <ul>
+          <li>Designed core features of CommonFloor's real-estate platform under the guidance of the lead designer, contributing across several major projects.</li>
+          <li>Built a design framework and specifications for ad creation that sharply improved ad visibility and engagement, driving a significant lift in ad revenue.</li>
+          <li>That impact led to being entrusted with 2 designers to guide on day-to-day ad design, while continuing to handle core UX design work in parallel.</li>
+        </ul>
+      </div>
+    </div>
+
+    <aside class="meta-col">
+      <div class="side-block">
+        <div class="side-h">Contact</div>
+        <div class="contact-line"><span class="lbl">Phone</span><a href="tel:+919060087134">+91 90600 87134</a></div>
+        <div class="contact-line"><span class="lbl">Email</span><a href="mailto:bharathks531@gmail.com">bharathks531@gmail.com</a></div>
+        <div class="contact-line"><span class="lbl">LinkedIn</span><a href="https://www.linkedin.com/in/bharathks531/">linkedin.com/in/bharathks531</a></div>
+      </div>
+      <div class="side-block">
+        <div class="side-h">Top Skills</div>
+        <div class="chip-wrap">
+          <span class="chip">UI/UX Design</span><span class="chip">Interaction Design</span>
+          <span class="chip">Wireframing</span><span class="chip">Rapid Prototyping</span>
+          <span class="chip">Product Thinking</span><span class="chip">Information Architecture</span>
+          <span class="chip">Design Systems</span><span class="chip">Motion Design</span>
+          <span class="chip">Usability Testing</span><span class="chip">User Research</span>
+        </div>
+      </div>
+      <div class="side-block">
+        <div class="side-h">Tools</div>
+        <div class="chip-wrap">
+          <span class="chip">Figma</span><span class="chip">Sketch</span>
+          <span class="chip">Framer</span><span class="chip">After Effects</span>
+          <span class="chip">Photoshop</span><span class="chip">Illustrator</span>
+          <span class="chip">Claude Code</span>
+        </div>
+      </div>
+      <div class="side-block">
+        <div class="side-h">Education</div>
+        <div class="item"><span class="t">B.Sc. Multimedia &amp; Animation</span><br>Arena Animation Academy, Bangalore</div>
+      </div>
+      <div class="side-block">
+        <div class="side-h">Languages</div>
+        <div class="chip-wrap">
+          <span class="chip">English</span><span class="chip">Kannada</span>
+          <span class="chip">Hindi</span><span class="chip">Telugu</span>
+        </div>
+      </div>
+      <div class="side-block">
+        <div class="side-h">Recognition</div>
+        <div class="item"><span class="t">Spot Award, Big Billion Days</span><br>Flipkart flagship sales event.</div>
+        <div class="item"><span class="t">Huawei UI Theme Contest</span><br>Winner, ₹1 lakh prize.</div>
+        <div class="item"><span class="t">Rising Star Award</span><br>CommonFloor Annual Awards.</div>
+      </div>
+    </aside>
+  </div>
+</body>
+</html>
