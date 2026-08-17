@@ -31,6 +31,7 @@
     box-shadow: 0 10px 44px rgba(20,24,30,0.16);
     font-family: 'Helvetica Neue', Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
+    zoom: 1.1;
   }
   body { background: #e9ebee; }
 
@@ -89,6 +90,7 @@
       grid-template-columns: minmax(0,1fr) 236px !important;
       width: 210mm; min-height: 297mm; margin: 0;
       box-shadow: none;
+      zoom: 1;
       -webkit-print-color-adjust: exact; print-color-adjust: exact;
     }
     .ve .left { grid-column: 1; }
@@ -97,7 +99,7 @@
   }
 
   @media screen and (max-width: 800px) {
-    .ve { width: auto; grid-template-columns: 1fr; margin: 12px; }
+    .ve { width: auto; grid-template-columns: 1fr; margin: 12px; zoom: 1; }
     .ve .left { padding: 28px 22px; }
     .ve .meta-col { border-left: none; border-top: 1px solid var(--hair); padding: 24px 22px; }
   }
