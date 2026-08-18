@@ -3,166 +3,296 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bharath K S, Product and UX Designer</title>
+<title>Bharath K S — UX / Product Designer</title>
+<meta name="description" content="Bharath K S is a Bangalore-based UX / Product Designer with 12+ years of experience across Flipkart, Virgio, and CommonFloor, designing digital products that are intuitive, functional, and built to scale.">
+<meta name="author" content="Bharath K S">
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bharath K S — UX / Product Designer">
+<meta property="og:description" content="12+ years designing digital products that are intuitive, functional, and built to scale. Flipkart · Virgio · CommonFloor.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bharath K S — UX / Product Designer">
+<meta name="twitter:description" content="12+ years designing digital products that are intuitive, functional, and built to scale. Flipkart · Virgio · CommonFloor.">
+<!-- Favicon: BK monogram, inline SVG -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a5fd0'/%3E%3Ctext x='50%25' y='50%25' dy='.06em' font-family='Helvetica,Arial,sans-serif' font-size='30' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='central'%3EBK%3C/text%3E%3C/svg%3E">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  .ve {
-    /* color tokens — all text >= 4.5:1 (WCAG AA) */
+  :root {
     --ink: #14161a;
-    --body: #33383f;
-    --muted: #5f636b;
-    --hair: #d7dae0;
-    --panel: #f4f5f7;
+    --body: #3a4048;
+    --muted: #6b7079;
+    --hair: #e7e9ed;
+    --hair-soft: #eef0f3;
+    --panel: #f6f7f9;
     --accent: #1a5fd0;
+    --accent-soft: #eaf1fd;
     --mono: 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
-    /* type scale (tightened for one-page A4) */
-    --t-name: 26px; --t-lead: 13px; --t-body: 13px; --t-title: 12.5px;
-    --t-meta: 10.5px; --t-label: 10px;
-    /* spacing scale */
-    --s1: 4px; --s2: 6px; --s3: 10px; --s4: 14px; --s6: 18px; --s8: 24px;
-
-    display: grid; grid-template-columns: minmax(0,1fr) 236px;
-    color: var(--body);
-    background: #fff;
-    width: 210mm;
-    min-height: 297mm;
-    margin: 24px auto;
-    box-shadow: 0 10px 44px rgba(20,24,30,0.16);
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    zoom: 1.1;
+    --sans: 'Helvetica Neue', Arial, sans-serif;
+    --ease: cubic-bezier(.2,.7,.2,1);
   }
-  body { background: #e9ebee; }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
-  .ve .left { padding: 12mm 11mm; min-width: 0; }
-  .ve .meta-col { background: var(--panel); border-left: 1px solid #e6e7ea; padding: 12mm var(--s6); }
-
-  /* header */
-  .ve .head { padding-bottom: var(--s6); margin-bottom: var(--s6); border-bottom: 1px solid var(--hair); }
-  .ve h1 { font-size: var(--t-name); font-weight: 800; letter-spacing: -0.8px; line-height: 1.05; color: var(--ink); }
-  .ve .role { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: 0.3px; margin-top: var(--s2); }
-  .ve .summary { font-size: var(--t-lead); line-height: 1.55; color: var(--ink); margin-top: var(--s4); }
-  .ve .summary strong { font-weight: 700; color: var(--ink); }
-
-  /* section headings */
-  .ve .col-h, .ve .side-h {
-    font-family: var(--mono); font-size: var(--t-label); font-weight: 600;
-    letter-spacing: 1px; text-transform: uppercase; color: var(--ink);
+  /* ---- dark theme tokens ---- */
+  body[data-theme="dark"] {
+    --ink: #f1f3f6;
+    --body: #c3c8d0;
+    --muted: #8b919b;
+    --hair: #2b2f36;
+    --hair-soft: #23262c;
+    --panel: #191c21;
+    --accent: #6ea3fb;
+    --accent-soft: #1b2740;
+    background: #0e1013;
   }
-  .ve .col-h::before, .ve .side-h::before { content: '// '; color: var(--accent); }
-  .ve .col-h { margin-bottom: var(--s4); }
-  .ve .side-h { margin-bottom: var(--s3); padding-bottom: var(--s2); border-bottom: 1px solid var(--hair); }
+  body[data-theme="dark"] .sheet { background: #14171c; box-shadow: 0 20px 60px rgba(0,0,0,0.45); }
+  body[data-theme="dark"] .chip { background: #1c2027; }
+  body[data-theme="dark"] .job::after, body[data-theme="dark"] .job li::before { border-color: #14171c; }
+  body[data-theme="dark"] .job::after { box-shadow: 0 0 0 1px var(--hair); }
+  body { transition: background .4s var(--ease); }
+  .sheet, .chip, .rail, .c-line a { transition: background .4s var(--ease), color .3s var(--ease), border-color .3s var(--ease); }
+  body {
+    font-family: var(--sans); color: var(--body); background: #eceef1;
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+    padding: clamp(12px, 4vw, 48px) clamp(12px, 4vw, 24px) clamp(48px, 10vw, 96px);
+  }
 
-  /* experience / timeline */
-  .ve .job { position: relative; padding-left: var(--s4); margin-bottom: var(--s6); }
-  .ve .job:last-child { margin-bottom: 0; }
-  .ve .job::before { content:''; position:absolute; left:3px; top:5px; bottom:5px; width:2px; background: var(--hair); }
-  .ve .job::after { content:''; position:absolute; left:0; top:5px; width:8px; height:8px; box-sizing:border-box; border-radius:50%; background: var(--accent); border:2px solid #fff; box-shadow:0 0 0 1px var(--hair); }
-  .ve .job-title { font-size: var(--t-title); font-weight: 800; letter-spacing: 0.4px; text-transform: uppercase; color: var(--ink); }
-  .ve .job-company { color: var(--accent); font-weight: 800; }
-  .ve .job-qualifier { color: var(--muted); font-weight: 700; }
-  .ve .job-meta { font-family: var(--mono); font-size: var(--t-meta); color: var(--muted); letter-spacing: 0.2px; margin: 2px 0 var(--s3); }
-  .ve .job ul { list-style: none; }
-  .ve .job li { position: relative; padding-left: var(--s4); font-size: var(--t-body); line-height: 1.45; margin-bottom: var(--s1); color: var(--body); }
-  .ve .job li:last-child { margin-bottom: 0; }
-  .ve .job li::before { content:''; position:absolute; left:3px; top:8px; width:4px; height:4px; border-radius:50%; background: var(--muted); }
+  /* motion primitives */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+  /* stagger children */
+  .stagger > * { opacity: 0; transform: translateY(14px); transition: opacity .5s var(--ease), transform .5s var(--ease); }
+  .stagger.in > * { opacity: 1; transform: none; }
+  .stagger.in > *:nth-child(1) { transition-delay: .04s; }
+  .stagger.in > *:nth-child(2) { transition-delay: .10s; }
+  .stagger.in > *:nth-child(3) { transition-delay: .16s; }
+  .stagger.in > *:nth-child(4) { transition-delay: .22s; }
+  .stagger.in > *:nth-child(5) { transition-delay: .28s; }
+  .stagger.in > *:nth-child(6) { transition-delay: .34s; }
 
-  /* right rail */
-  .ve .side-block { margin-bottom: var(--s8); }
-  .ve .side-block:last-child { margin-bottom: 0; }
-  .ve .contact-line { font-size: var(--t-body); color: var(--body); line-height: 1.4; margin-bottom: var(--s2); word-break: break-word; }
-  .ve .contact-line:last-of-type { margin-bottom: 0; }
-  .ve .contact-line a { color: var(--body); text-decoration: none; }
-  .ve .contact-line .lbl { font-family: var(--mono); font-size: var(--t-label); color: var(--muted); display:block; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 1px; }
-  .ve .chip-wrap { display: flex; flex-wrap: wrap; gap: var(--s1) 5px; }
-  .ve .chip { font-family: var(--mono); font-size: 11px; background: #fff; border: 1px solid var(--hair); color: var(--body); padding: 4px 8px; border-radius: 4px; line-height: 1.2; }
-  .ve .item { font-size: var(--t-body); line-height: 1.45; color: var(--body); margin-bottom: var(--s3); }
-  .ve .item:last-child { margin-bottom: 0; }
-  .ve .item .t { font-weight: 700; color: var(--ink); }
+  .sheet {
+    max-width: 940px; margin: 0 auto; background: #fff;
+    border-radius: clamp(14px, 3vw, 20px); overflow: hidden;
+    box-shadow: 0 20px 60px rgba(20,24,30,0.12);
+    display: grid; grid-template-columns: minmax(0,1fr) 300px;
+    animation: sheetIn .7s var(--ease) both;
+  }
+  @keyframes sheetIn { from { opacity: 0; transform: translateY(20px) scale(.995); } to { opacity: 1; transform: none; } }
 
-  /* PRINT — mirrors the on-screen A4 sheet exactly */
+  /* ---- left ---- */
+  .main { padding: clamp(36px, 5vw, 64px) clamp(28px, 5vw, 56px); min-width: 0; }
+  .head { padding-bottom: clamp(28px, 4vw, 40px); margin-bottom: clamp(32px, 4vw, 44px); border-bottom: 1px solid var(--hair); }
+  h1 {
+    font-size: clamp(32px, 8vw, 42px); font-weight: 800; letter-spacing: -1.5px; line-height: 1; color: var(--ink);
+    background: linear-gradient(100deg, var(--ink) 0%, var(--ink) 40%, var(--accent) 55%, var(--ink) 70%, var(--ink) 100%);
+    background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: shimmer 6s var(--ease) 1s both;
+  }
+  @keyframes shimmer { 0% { background-position: 120% 0; } 40%,100% { background-position: 0 0; } }
+  .role { font-family: var(--mono); font-size: clamp(12.5px, 3.4vw, 14px); font-weight: 700; color: var(--accent); letter-spacing: 0.3px; margin-top: 14px; }
+  .role::before { content: '// '; }
+  .summary { font-size: clamp(15px, 3.6vw, 16px); line-height: 1.7; color: var(--body); margin-top: 24px; max-width: 62ch; }
+  .summary strong { font-weight: 700; color: var(--ink); }
+
+  .col-h { font-family: var(--mono); font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--ink); margin-bottom: clamp(26px, 4vw, 34px); }
+  .col-h::before { content: '// '; color: var(--accent); }
+
+  /* timeline */
+  .job { position: relative; padding-left: 30px; margin-bottom: clamp(32px, 4vw, 42px); }
+  .job:last-child { margin-bottom: 0; }
+  .job::before { content:''; position:absolute; left:5px; top:9px; bottom:-18px; width:2px; background: var(--hair); transform: scaleY(0); transform-origin: top; transition: transform .6s var(--ease) .15s; }
+  .job.in::before { transform: scaleY(1); }
+  .job:last-child::before { display: none; }
+  .job::after {
+    content:''; position:absolute; left:0; top:6px; width:12px; height:12px; box-sizing:border-box; border-radius:50%;
+    background: var(--accent); border:3px solid #fff; box-shadow:0 0 0 1px var(--hair);
+    transform: scale(0); transition: transform .45s var(--ease) .1s;
+  }
+  .job.in::after { transform: scale(1); }
+  .job-top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; margin-bottom: 3px; }
+  .job-title { font-size: clamp(16px, 4.2vw, 18px); font-weight: 800; letter-spacing: -0.3px; color: var(--ink); }
+  .job-company { color: var(--accent); }
+  a.job-company { text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .18s var(--ease), opacity .18s; }
+  a.job-company:hover, a.job-company:active { border-bottom-color: var(--accent); }
+  .job-qual { color: var(--muted); font-weight: 600; font-size: clamp(13px, 3.4vw, 15px); }
+  .job-date { font-family: var(--mono); font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+  .job ul { list-style: none; margin-top: 14px; }
+  .job li { position: relative; padding-left: 18px; font-size: clamp(14px, 3.6vw, 14.5px); line-height: 1.65; margin-bottom: 9px; color: var(--body); max-width: 66ch; }
+  .job li:last-child { margin-bottom: 0; }
+  .job li::before { content:''; position:absolute; left:2px; top:10px; width:5px; height:5px; border-radius:50%; background: var(--accent); }
+
+  /* ---- right rail ---- */
+  .rail { background: var(--panel); padding: clamp(36px, 5vw, 64px) clamp(28px, 5vw, 40px); }
+  .block { margin-bottom: clamp(34px, 4vw, 48px); }
+  .block:last-child { margin-bottom: 0; }
+  .rail-h { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--ink); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--hair); }
+  .rail-h::before { content: '// '; color: var(--accent); }
+
+  .c-line { font-size: 14px; color: var(--body); line-height: 1.4; margin-bottom: 14px; word-break: break-word; }
+  .c-line:last-child { margin-bottom: 0; }
+  .c-line a { color: var(--body); text-decoration: none; transition: color .18s var(--ease); }
+  .c-line a:hover, .c-line a:active { color: var(--accent); }
+  .c-line .lbl { font-family: var(--mono); font-size: 10px; color: var(--muted); display: block; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 3px; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font-family: var(--mono); font-size: 11.5px; background: #fff; border: 1px solid var(--hair); color: var(--body);
+    padding: 7px 11px; border-radius: 7px; transition: transform .18s var(--ease), border-color .18s, color .18s, box-shadow .18s;
+    cursor: default;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+  .chip:active { transform: scale(.98); }
+
+  .item { margin-bottom: 16px; font-size: 14px; line-height: 1.5; }
+  .item:last-child { margin-bottom: 0; }
+  .item .t { font-weight: 700; color: var(--ink); }
+  .item .s { color: var(--muted); }
+
+  /* scroll progress bar — only in single-column view */
+  .progress { display: none; position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: var(--accent); z-index: 100; transition: width .1s linear; }
+
+  /* controls — in-flow (not sticky), sit above the sheet */
+  .controls { max-width: 940px; margin: 0 auto 16px; display: flex; justify-content: flex-end; gap: 8px; }
+  .ctrl {
+    font-family: var(--mono); font-size: 12px; display: inline-flex; align-items: center; gap: 6px;
+    background: #fff; border: 1px solid var(--hair); color: var(--ink); padding: 9px 13px; border-radius: 10px;
+    cursor: pointer; text-decoration: none; transition: border-color .18s, color .18s, background .3s;
+  }
+  body[data-theme="dark"] .ctrl { background: #1c2027; }
+  .ctrl:hover { border-color: var(--accent); color: var(--accent); }
+  .ctrl:active { transform: translateY(0) scale(.97); }
+  .ctrl svg { width: 15px; height: 15px; display: block; }
+  .ctrl-icon { padding: 9px; }
+  .ctrl-icon #themeIcon { display: inline-flex; }
+  @media (max-width: 560px) { .ctrl .label { display: none; } .ctrl { padding: 10px; } .end-btn { padding: 12px 20px; } .end-btn .label { display: inline; } }
+  @media print { .progress, .controls, .end-cta { display: none !important; } }
+
+  /* end-of-page download */
+  .end-cta { display: flex; justify-content: center; margin: 28px auto 0; }
+  .end-btn { font-size: 13px; padding: 12px 20px; }
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width: 780px) {
+    .progress { display: block; }
+    .sheet { grid-template-columns: 1fr; }
+    .rail { border-top: 1px solid var(--hair); display: flex; flex-direction: column; }
+    .rail .block { order: 1; }          /* default order for skills/tools/edu/lang/recognition */
+    .rail .block.contact-block { order: 2; margin-bottom: 0; }   /* Contact moves to the very end */
+    .rail .block.contact-block { margin-top: clamp(34px, 4vw, 48px); padding-top: clamp(28px, 5vw, 40px); border-top: 1px solid var(--hair); }
+    /* single-column: dividers BETWEEN sections instead of under each title */
+    .rail-h { border-bottom: none; padding-bottom: 0; margin-bottom: 14px; }
+    .rail .block + .block { padding-top: clamp(28px, 5vw, 40px); border-top: 1px solid var(--hair); }
+    .rail .block.contact-block + .block { padding-top: 0; border-top: none; }  /* first visual block: no top rule */
+    h1 { letter-spacing: -1px; }
+    .rail-h { font-size: 12.5px; }
+    .c-line a { display: inline-block; padding: 2px 0; }
+    .chip { font-size: 12.5px; padding: 9px 13px; }
+    .job li { max-width: none; }
+    .summary { max-width: none; }
+  }
+  @media (max-width: 460px) {
+    .job-date { width: 100%; }   /* date drops under title, no cramped wrap */
+    .job-top { gap: 2px; }
+  }
+
   @media print {
     @page { size: A4; margin: 0; }
-    html, body { background: #fff; margin: 0; }
-    .ve {
-      display: grid !important;
-      grid-template-columns: minmax(0,1fr) 236px !important;
-      width: 210mm; min-height: 297mm; margin: 0;
-      box-shadow: none;
-      zoom: 1;
-      -webkit-print-color-adjust: exact; print-color-adjust: exact;
-    }
-    .ve .left { grid-column: 1; }
-    .ve .meta-col { grid-column: 2; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { background: #fff; padding: 0; }
+    .sheet { display: grid !important; grid-template-columns: minmax(0,1fr) 300px !important; box-shadow: none; border-radius: 0; max-width: 100%; animation: none; }
+    .rail { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    h1 { animation: none; color: var(--ink); -webkit-text-fill-color: var(--ink); }
+    .reveal, .stagger > * { opacity: 1 !important; transform: none !important; }
+    .job::before, .job::after { transform: none !important; }
     .job { break-inside: avoid; }
   }
 
-  @media screen and (max-width: 800px) {
-    .ve { width: auto; grid-template-columns: 1fr; margin: 12px; zoom: 1; }
-    .ve .left { padding: 28px 22px; }
-    .ve .meta-col { border-left: none; border-top: 1px solid var(--hair); padding: 24px 22px; }
+  @media (prefers-reduced-motion: reduce) {
+    *, .sheet, h1 { animation: none !important; }
+    .reveal, .stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .job::before { transform: scaleY(1) !important; }
+    .job::after { transform: scale(1) !important; }
+    .chip:hover { transform: none; }
   }
 </style>
 </head>
 <body>
-  <div class="ve">
-    <div class="left">
-      <div class="head">
+  <div class="progress" id="progress"></div>
+  <div class="controls">
+    <a class="ctrl" id="pdfBtn" href="bharath-ks-resume.pdf" download aria-label="Download resume as PDF">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+      <span class="label">Download Resume</span>
+    </a>
+    <button class="ctrl ctrl-icon" id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span id="themeIcon"></span>
+    </button>
+  </div>
+  <div class="sheet">
+    <div class="main">
+      <div class="head reveal in">
         <h1>Bharath K S</h1>
         <div class="role">UX / Product Designer</div>
         <p class="summary">
           A multidisciplinary Product Designer with <strong>12+ years</strong> designing digital experiences that are
           intuitive, functional, and built to scale. At <strong>Flipkart</strong>, redesigned core product features and
           led design on new, high-impact launches. Has carried that same ownership into startups, helping build design
-          functions and products from scratch, increasingly with AI built into the process to sharpen decisions
-          and execute stronger work.
+          functions and products from scratch, increasingly with AI built into the process to sharpen decisions and
+          execute stronger work.
         </p>
       </div>
 
-      <div class="col-h">Experience</div>
-      <div class="job">
-        <div class="job-title">UX/Product Designer <span class="job-qualifier">(Independent / Consulting)</span></div>
-        <div class="job-meta">2021 – Present</div>
-        <ul>
-          <li>Partnered with a visual designer to redesign the shopping experience for <span class="job-company">Virgio</span>, a sustainable fashion app, while guiding a team of 2 designers. The improved usability reduced journey drop-offs and lifted engagement, interaction, and conversion.</li>
-          <li>Designed digital products from the ground up for early-stage clients, taking each from concept to a build-ready product.</li>
-          <li>Currently building a story-development tool for writers, turning scattered ideas into a clear, structured plan to help them go from first idea to finished script.</li>
-        </ul>
-      </div>
-      <div class="job">
-        <div class="job-title">UX/Product Designer II, <span class="job-company">Flipkart</span></div>
-        <div class="job-meta">2014 – 2021</div>
-        <ul>
-          <li>Redesigned core end-to-end experiences across web and app, including Ratings &amp; Reviews, Q&amp;A, Product Page, and Home Page widgets.</li>
-          <li>Contributed as a core team member across multiple design responsibilities for Big Billion Days, India's flagship shopping event.</li>
-          <li>Pioneered Cardless Credit and Flipkart Lite from the ground up; Flipkart Lite, built in collaboration with Google, became India's first progressive web app and drew global recognition.</li>
-          <li>Designed a simplified Flipkart experience for India's next 100M users, reimagining the app for a mass-market audience.</li>
-          <li>Designed FK Videos, an experimental in-app streaming feature built to boost customer retention and engagement.</li>
-          <li>Grounded design decisions in first-hand user research and usability testing, and partnered closely with PMs, marketing, business, and engineering, from concept through launch and beyond, to ensure smooth execution.</li>
-        </ul>
-      </div>
-      <div class="job">
-        <div class="job-title">UI/UX Designer, <span class="job-company">CommonFloor</span></div>
-        <div class="job-meta">2013 – 2014</div>
-        <ul>
-          <li>Designed core features of CommonFloor's real-estate platform under the guidance of the lead designer, contributing across several major projects.</li>
-          <li>Built a design framework and specifications for ad creation that sharply improved ad visibility and engagement, driving a significant lift in ad revenue.</li>
-          <li>That impact led to being entrusted with 2 designers to guide on day-to-day ad design, while continuing to handle core UX design work in parallel.</li>
-        </ul>
+      <div class="reveal">
+        <div class="col-h">Experience</div>
+
+        <div class="job">
+          <div class="job-top">
+            <span class="job-title">UX / Product Designer <span class="job-qual">(Independent / Consulting)</span></span>
+            <span class="job-date">2021 – Present</span>
+          </div>
+          <ul>
+            <li>Partnered with a visual designer to redesign the shopping experience for <a class="job-company" style="font-weight:700" href="https://www.virgio.com/" target="_blank" rel="noopener">Virgio</a>, a sustainable fashion app, while guiding a team of 2 designers. The improved usability reduced journey drop-offs and lifted engagement, interaction, and conversion.</li>
+            <li>Designed digital products from the ground up for early-stage clients, taking each from concept to a build-ready product.</li>
+            <li>Currently building a story-development tool for writers, turning scattered ideas into a clear, structured plan to help them go from first idea to finished script.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-top">
+            <span class="job-title">UX / Product Designer II, <a class="job-company" href="https://www.flipkart.com/" target="_blank" rel="noopener">Flipkart</a></span>
+            <span class="job-date">2014 – 2021</span>
+          </div>
+          <ul>
+            <li>Redesigned core end-to-end experiences across web and app, including Ratings &amp; Reviews, Q&amp;A, Product Page, and Home Page widgets.</li>
+            <li>Contributed as a core team member across multiple design responsibilities for Big Billion Days, India's flagship shopping event.</li>
+            <li>Pioneered Cardless Credit and Flipkart Lite from the ground up; Flipkart Lite, built in collaboration with Google, became India's first progressive web app and drew global recognition.</li>
+            <li>Designed a simplified Flipkart experience for India's next 100M users, reimagining the app for a mass-market audience.</li>
+            <li>Designed FK Videos, an experimental in-app streaming feature built to boost customer retention and engagement.</li>
+            <li>Grounded design decisions in first-hand user research and usability testing, and partnered closely with PMs, marketing, business, and engineering, from concept through launch and beyond, to ensure smooth execution.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-top">
+            <span class="job-title">UI / UX Designer, <a class="job-company" href="https://www.commonfloor.com/" target="_blank" rel="noopener">CommonFloor</a></span>
+            <span class="job-date">2013 – 2014</span>
+          </div>
+          <ul>
+            <li>Designed core features of CommonFloor's real-estate platform under the guidance of the lead designer, contributing across several major projects.</li>
+            <li>Built a design framework and specifications for ad creation that sharply improved ad visibility and engagement, driving a significant lift in ad revenue.</li>
+            <li>That impact led to being entrusted with 2 designers to guide on day-to-day ad design, while continuing to handle core UX design work in parallel.</li>
+          </ul>
+        </div>
       </div>
     </div>
 
-    <aside class="meta-col">
-      <div class="side-block">
-        <div class="side-h">Contact</div>
-        <div class="contact-line"><span class="lbl">Phone</span><a href="tel:+919060087134">+91 90600 87134</a></div>
-        <div class="contact-line"><span class="lbl">Email</span><a href="mailto:bharathks531@gmail.com">bharathks531@gmail.com</a></div>
-        <div class="contact-line"><span class="lbl">LinkedIn</span><a href="https://www.linkedin.com/in/bharathks531/">linkedin.com/in/bharathks531</a></div>
+    <aside class="rail">
+      <div class="block contact-block reveal in">
+        <div class="rail-h">Contact</div>
+        <div class="c-line"><span class="lbl">Phone</span><a href="tel:+919060087134">+91 90600 87134</a></div>
+        <div class="c-line"><span class="lbl">Email</span><a href="mailto:bharathks531@gmail.com">bharathks531@gmail.com</a></div>
+        <div class="c-line"><span class="lbl">LinkedIn</span><a href="https://www.linkedin.com/in/bharathks531/">linkedin.com/in/bharathks531</a></div>
       </div>
-      <div class="side-block">
-        <div class="side-h">Top Skills</div>
-        <div class="chip-wrap">
+      <div class="block reveal in">
+        <div class="rail-h">Top Skills</div>
+        <div class="chips">
           <span class="chip">UI/UX Design</span><span class="chip">Interaction Design</span>
           <span class="chip">Wireframing</span><span class="chip">Rapid Prototyping</span>
           <span class="chip">Product Thinking</span><span class="chip">Information Architecture</span>
@@ -170,33 +300,84 @@
           <span class="chip">Usability Testing</span><span class="chip">User Research</span>
         </div>
       </div>
-      <div class="side-block">
-        <div class="side-h">Tools</div>
-        <div class="chip-wrap">
+      <div class="block reveal in">
+        <div class="rail-h">Tools</div>
+        <div class="chips">
           <span class="chip">Figma</span><span class="chip">Sketch</span>
           <span class="chip">Framer</span><span class="chip">After Effects</span>
           <span class="chip">Photoshop</span><span class="chip">Illustrator</span>
           <span class="chip">Claude Code</span>
         </div>
       </div>
-      <div class="side-block">
-        <div class="side-h">Education</div>
-        <div class="item"><span class="t">B.Sc. Multimedia &amp; Animation</span><br>Arena Animation Academy, Bangalore</div>
+      <div class="block reveal in">
+        <div class="rail-h">Education</div>
+        <div class="item"><span class="t">B.Sc. Multimedia &amp; Animation</span><br><span class="s">Arena Animation Academy, Bangalore</span></div>
       </div>
-      <div class="side-block">
-        <div class="side-h">Languages</div>
-        <div class="chip-wrap">
+      <div class="block reveal in">
+        <div class="rail-h">Languages</div>
+        <div class="chips">
           <span class="chip">English</span><span class="chip">Kannada</span>
           <span class="chip">Hindi</span><span class="chip">Telugu</span>
         </div>
       </div>
-      <div class="side-block">
-        <div class="side-h">Recognition</div>
-        <div class="item"><span class="t">Spot Award, Big Billion Days</span><br>Flipkart flagship sales event.</div>
-        <div class="item"><span class="t">Huawei UI Theme Contest</span><br>Winner, ₹1 lakh prize.</div>
-        <div class="item"><span class="t">Rising Star Award</span><br>CommonFloor Annual Awards.</div>
+      <div class="block reveal in">
+        <div class="rail-h">Recognition</div>
+        <div class="item"><span class="t">Spot Award, Big Billion Days</span><br><span class="s">Flipkart flagship sales event.</span></div>
+        <div class="item"><span class="t">Huawei UI Theme Contest</span><br><span class="s">Winner, ₹1 lakh prize.</span></div>
+        <div class="item"><span class="t">Rising Star Award</span><br><span class="s">CommonFloor Annual Awards.</span></div>
       </div>
     </aside>
   </div>
+
+  <div class="end-cta">
+    <a class="ctrl end-btn" id="pdfBtnEnd" href="bharath-ks-resume.pdf" download aria-label="Download resume as PDF">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+      <span class="label">Download Resume</span>
+    </a>
+  </div>
+
+  <script>
+    // Reveal-on-scroll for .reveal, .stagger, and individual timeline .job blocks
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+    document.querySelectorAll('.reveal, .stagger, .job').forEach(el => io.observe(el));
+
+    // Subtle press feedback on chips (nice on touch)
+    document.querySelectorAll('.chip').forEach(chip => {
+      chip.addEventListener('pointerdown', () => chip.style.transform = 'scale(.97)');
+      const reset = () => chip.style.transform = '';
+      chip.addEventListener('pointerup', reset);
+      chip.addEventListener('pointerleave', reset);
+    });
+
+    // Scroll progress bar
+    const bar = document.getElementById('progress');
+    const onScroll = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+
+    // Dark mode — auto-detect OS, allow manual toggle, swap icon
+    const body = document.body;
+    const themeIcon = document.getElementById('themeIcon');
+    const moonSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>';
+    const sunSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>';
+    const setTheme = (dark) => {
+      body.setAttribute('data-theme', dark ? 'dark' : 'light');
+      themeIcon.innerHTML = dark ? sunSVG : moonSVG;   // show what you'll switch TO
+    };
+    setTheme(false);   // always start in light mode
+    document.getElementById('themeBtn').addEventListener('click', () => {
+      setTheme(body.getAttribute('data-theme') !== 'dark');
+    });
+  </script>
 </body>
 </html>
