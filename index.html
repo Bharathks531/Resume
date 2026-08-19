@@ -99,15 +99,11 @@
   /* timeline */
   .job { position: relative; padding-left: 30px; margin-bottom: clamp(32px, 4vw, 42px); }
   .job:last-child { margin-bottom: 0; }
-  .job::before { content:''; position:absolute; left:5px; top:9px; height: var(--line-h, 60px); width:2px; background: var(--hair); transform: scaleY(0); transform-origin: top; transition: transform .6s var(--ease) .15s; }
-  .job.in::before { transform: scaleY(1); }
-  .job:last-child::before { display: none; }
+  .job::before { content:''; position:absolute; left:5px; top:9px; height: var(--line-h, 60px); width:2px; background: var(--hair); }
   .job::after {
     content:''; position:absolute; left:0; top:6px; width:12px; height:12px; box-sizing:border-box; border-radius:50%;
     background: var(--accent); border:3px solid #fff; box-shadow:0 0 0 1px var(--hair);
-    transform: scale(0); transition: transform .45s var(--ease) .1s;
   }
-  .job.in::after { transform: scale(1); }
   .job-top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; margin-bottom: 3px; }
   .job-title { font-size: clamp(16px, 4.2vw, 18px); font-weight: 800; letter-spacing: -0.3px; color: var(--ink); }
   .job-company { color: var(--accent); }
@@ -342,7 +338,14 @@
     function syncTimelineLines() {
       const jobs = document.querySelectorAll('.job');
       jobs.forEach((job, i) => {
-        if (i === jobs.length - 1) return;
+        if (i === jobs.length - 1) {
+          // Last entry: run the line down to the bottom of its last bullet, not the full box
+          // (the box can have trailing space beyond where the text actually ends).
+          const lastLi = job.querySelector('li:last-child') || job;
+          const h = lastLi.getBoundingClientRect().bottom - job.getBoundingClientRect().top - 15;
+          job.style.setProperty('--line-h', Math.max(0, h) + 'px');
+          return;
+        }
         const dy = jobs[i + 1].getBoundingClientRect().top - job.getBoundingClientRect().top;
         job.style.setProperty('--line-h', Math.max(0, dy - 3) + 'px');
       });
@@ -351,7 +354,7 @@
     window.addEventListener('load', syncTimelineLines);
     window.addEventListener('resize', syncTimelineLines);
 
-    // Reveal-on-scroll for .reveal, .stagger, and individual timeline .job blocks.
+    // Reveal-on-scroll for .reveal and .stagger blocks (page sections/text).
     // On mobile, the single-column layout is too tall for scroll-triggered reveals to
     // feel right (most of the page sits blank below the fold) — so instead, auto-play
     // the same reveal animation once, in sequence, right after load. Desktop keeps the
@@ -359,7 +362,7 @@
     const isMobile = window.matchMedia('(max-width: 780px)').matches;
 
     if (isMobile) {
-      const els = document.querySelectorAll('.reveal, .stagger, .job');
+      const els = document.querySelectorAll('.reveal, .stagger');
       els.forEach((el, i) => {
         setTimeout(() => el.classList.add('in'), 120 + i * 140);
       });
@@ -370,7 +373,7 @@
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 
-      document.querySelectorAll('.reveal, .stagger, .job').forEach(el => io.observe(el));
+      document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
     }
 
     // Subtle press feedback on chips (nice on touch)
