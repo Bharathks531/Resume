@@ -99,7 +99,7 @@
   /* timeline */
   .job { position: relative; padding-left: 30px; margin-bottom: clamp(32px, 4vw, 42px); }
   .job:last-child { margin-bottom: 0; }
-  .job::before { content:''; position:absolute; left:5px; top:9px; bottom:calc(-1 * clamp(32px, 4vw, 42px) - 6px); width:2px; background: var(--hair); transform: scaleY(0); transform-origin: top; transition: transform .6s var(--ease) .15s; }
+  .job::before { content:''; position:absolute; left:5px; top:9px; height: var(--line-h, 60px); width:2px; background: var(--hair); transform: scaleY(0); transform-origin: top; transition: transform .6s var(--ease) .15s; }
   .job.in::before { transform: scaleY(1); }
   .job:last-child::before { display: none; }
   .job::after {
@@ -337,6 +337,20 @@
   </div>
 
   <script>
+    // Measure the exact pixel gap to the next job's dot, so the connector line always
+    // reaches it with no visual break — instead of guessing via a fixed CSS offset.
+    function syncTimelineLines() {
+      const jobs = document.querySelectorAll('.job');
+      jobs.forEach((job, i) => {
+        if (i === jobs.length - 1) return;
+        const dy = jobs[i + 1].getBoundingClientRect().top - job.getBoundingClientRect().top;
+        job.style.setProperty('--line-h', Math.max(0, dy - 3) + 'px');
+      });
+    }
+    syncTimelineLines();
+    window.addEventListener('load', syncTimelineLines);
+    window.addEventListener('resize', syncTimelineLines);
+
     // Reveal-on-scroll for .reveal, .stagger, and individual timeline .job blocks.
     // On mobile, the single-column layout is too tall for scroll-triggered reveals to
     // feel right (most of the page sits blank below the fold) — so instead, auto-play
