@@ -99,7 +99,7 @@
   /* timeline */
   .job { position: relative; padding-left: 30px; margin-bottom: clamp(32px, 4vw, 42px); }
   .job:last-child { margin-bottom: 0; }
-  .job::before { content:''; position:absolute; left:5px; top:9px; bottom:-18px; width:2px; background: var(--hair); transform: scaleY(0); transform-origin: top; transition: transform .6s var(--ease) .15s; }
+  .job::before { content:''; position:absolute; left:5px; top:9px; bottom:calc(-1 * clamp(32px, 4vw, 42px) - 6px); width:2px; background: var(--hair); transform: scaleY(0); transform-origin: top; transition: transform .6s var(--ease) .15s; }
   .job.in::before { transform: scaleY(1); }
   .job:last-child::before { display: none; }
   .job::after {
